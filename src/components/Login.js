@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { login, signUp } from "../api/axiosConfig";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "../actions/actions";
 
 export default function Login() {
+    const dispatch = useDispatch();
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -21,7 +25,7 @@ export default function Login() {
         login(authRequest)
             .then((response) => {
                 const jwtToken = response.data.jwt;
-                alert(jwtToken);
+                dispatch(loginSuccess(jwtToken));
             })
             .catch((error) => {
                 console.error("Login Failed: " + JSON.stringify(error.response.data));
