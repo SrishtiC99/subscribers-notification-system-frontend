@@ -1,15 +1,15 @@
-import { Route, Router } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Home from './components/Home';
-import Login from './components/Login';
-import { useSelector } from 'react-redux';
+import TemplatesPage from './components/TemplatesPage';
+import RootPage from './components/RootPage';
 
 function App() {
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-
   return (
     <div className="App">
-      {isAuthenticated ? <Home /> : <Login />}
+      <Routes>
+        <Route path='/' element={<RootPage/>} />
+        <Route path='/templates' element={<TemplatesPage/>} />
+      </Routes>
     </div>
   );
 }

@@ -16,3 +16,11 @@ export const login = (authRequest) => {
 export const signUp = (authRequest) => {
     return apiService.post('api/v1/auth/register', authRequest);
 }
+
+export const getAllTemplates = (jwtToken) => {
+    return apiService.get('api/v1/templates/', {
+        headers: {
+            Authorization: `Bearer ${jwtToken}`
+        }
+    });
+};

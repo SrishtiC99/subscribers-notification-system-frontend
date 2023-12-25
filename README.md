@@ -3,3 +3,5 @@
 #### Todos:
 
 - [ ] Handle Signup
+- [ ] improve TemplatesPage list ui
+- [ ] Button click on Home
