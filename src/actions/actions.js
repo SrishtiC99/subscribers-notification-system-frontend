@@ -12,3 +12,18 @@ export const fetchAllSubscribers = (subscribers) => ({
     type: 'FETCH_ALL_SUBSCRIBERS',
     payload: { subscribers }
 });
+
+export const fetchBillingAccount = (isAccountExpired, role, lastBillingDate) => ({
+    type: 'GET_BILLING_ACCOUNT',
+    payload: { isAccountExpired, role, lastBillingDate }
+});
+
+export const upgradeAccount = (role, lastBillingDate) => ({
+    type: 'UPGRADE_ROLE',
+    payload: { role, lastBillingDate }
+});
+
+export const subscription = (lastBillingDate) => ({
+    type: 'RENEW_SUBSCRIPTION',
+    payload: { lastBillingDate }
+});

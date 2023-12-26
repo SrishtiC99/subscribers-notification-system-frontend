@@ -32,3 +32,27 @@ export const getAllSubscribers = (jwtToken) => {
         }
     });
 }
+
+export const getBillingAccount = (jwtToken) => {
+    return apiService.get('api/v2/billing/', {
+        headers: {
+            Authorization: `Bearer ${jwtToken}`
+        }
+    });
+}
+
+export const renewSubscription = (jwtToken) => {
+    return apiService.post('api/v2/billing/renew', {
+        headers: {
+            Authorization: `Bearer ${jwtToken}`
+        }
+    });
+}
+
+export const upgadeToOwner = (jwtToken) => {
+    return apiService.patch('api/v2/billing/upgrade/owner', {
+        headers: {
+            Authorization: `Bearer ${jwtToken}`
+        }
+    });
+}

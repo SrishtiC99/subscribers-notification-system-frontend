@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import '../css/Home.css';
 import { useNavigate } from 'react-router-dom';
-import { getAllSubscribers, getAllTemplates } from "../api/axiosConfig";
-import { fetchAllSubscribers, fetchTemplates } from '../actions/actions';
+import { getAllSubscribers, getAllTemplates, getBillingAccount } from "../api/axiosConfig";
+import { fetchAllSubscribers, fetchBillingAccount, fetchTemplates } from '../actions/actions';
 
 export default function Home() {
     const jwtToken = useSelector(state => state.auth.jwtToken);
@@ -33,13 +33,25 @@ export default function Home() {
         })
     }
 
+    const goToBillingPage = () => {
+        getBillingAccount(jwtToken)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                dispatch(fetchBillingAccount(response.data.isExpired, response.data.accountType, response.data.lastBillingDate));
+                navigate('/billing');
+            })
+            .catch((error) => {
+                console.error("Error: " + JSON.stringify(error.response));
+            });
+    }
+
     return (
         <div>
             <h2>Manage Your Account</h2>
             <div className="grid-container">
                 <div className="grid-item" onClick={goToSubscribersPage}>Manage Your Subscribers</div>
                 <div className="grid-item" onClick={goToTemplatesPage}>Manage Your Templates</div>
-                <div className="grid-item">Manage Your Subscription</div>
+                <div className="grid-item" onClick={goToBillingPage}>Manage Your Subscription</div>
                 <div className="grid-item">Notify Your Subscribers</div>
             </div>
         </div>

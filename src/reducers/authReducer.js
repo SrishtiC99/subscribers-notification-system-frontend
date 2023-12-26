@@ -3,7 +3,10 @@ const initialState = {
     jwtToken: null,
     loggedInUser: null,
     templates: [],
-    subscribers: []
+    subscribers: [],
+    isAccountExpired: false,
+    role: 'USER',
+    lastBillingDate: null
 }
 
 const authReducer = (state = initialState, action) => {
@@ -27,8 +30,25 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 subscribers
             }
-        case 'LOGIN_FAILED':
-            return state;
+        case 'GET_BILLING_ACCOUNT':
+            return {
+                ...state,
+                isAccountExpired: action.payload.isAccountExpired,
+                role: action.payload.role,
+                lastBillingDate: action.payload.lastBillingDate
+            }
+        case 'UPGRADE_ROLE': 
+            return {
+                ...state,
+                role: 'OWNER',
+                lastBillingDate: action.payload.lastBillingDate
+            }
+        case 'RENEW_SUBSCRIPTION': 
+            return {
+                ...state,
+                isAccountExpired: false,
+                lastBillingDate: action.payload.lastBillingDate
+            }
         default:
             return state;
     }
