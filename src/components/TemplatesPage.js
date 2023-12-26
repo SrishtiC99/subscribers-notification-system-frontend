@@ -1,20 +1,21 @@
-import { useState } from "react";
 import { useSelector } from "react-redux";
+import '../css/TemplatesPage.css';
 
 export default function TemplatesPage() {
-    const [templates, setTemplates] = useState(useSelector(state => state.auth.templates));
-    
+    const templates = useSelector(state => state.auth.templates);
+
     return (
         <div>
             <h2> Manage Your Templates </h2>
-            <ul>
+            <div className="template-container">
                 {templates.map(template => (
-                    <li key={template.id}>
-                        <h4>{template.title}</h4>
-                        <p>{template.content}</p>
-                    </li>
+                    <div className="template" key={template.id}>
+                        <p className="template-title">{template.title}</p>
+                        <p className="template-content">{template.content}</p>
+                        <button>Notify</button>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }

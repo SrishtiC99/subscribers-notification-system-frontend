@@ -1,0 +1,30 @@
+form {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 4px;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+input {
+    padding: 8px;
+    margin-left: 8px;
+}
+
+p {
+    font-weight: 600;
+    color: #7C93C3;
+}
+
+button {
+    font-size: 24px;
+    background-color: #A25772;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+}

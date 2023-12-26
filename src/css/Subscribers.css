@@ -1,0 +1,27 @@
+h2 {
+    color: #A25772;
+}
+
+table,
+th,
+td {
+    border: 1px solid #7C93C3;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px 32px;
+}
+
+/* .button {
+    border: none;
+} */
+
+button {
+    font-size: 12px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    background-color: #A25772;
+    color: white;
+}

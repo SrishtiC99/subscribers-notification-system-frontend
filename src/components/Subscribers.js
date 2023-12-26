@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import '../css/Subscribers.css';
 
 export default function Subscribers() {
     const subscribers = useSelector(state => state.auth.subscribers);
@@ -6,21 +7,32 @@ export default function Subscribers() {
     return (
         <div>
             <h2>Manage Your Subsscribers</h2>
-            <ol>
-                {
-                    subscribers.map(subscriber => (
-                        <li key={subscriber.id}>
-                            <p>{subscriber.email}</p>
-                            <p>{subscriber.telegramId}</p>
-                            <p>{subscriber.phoneNumber}</p>
-                            <br />
-                            <p>Location: </p>
-                            <p>{subscriber.geolocation.longitude}</p>
-                            <p>{subscriber.geolocation.latitude}</p>
-                        </li>
-                    ))
-                }
-            </ol>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>TelegramId</th>
+                        <th>Phone Number</th>
+                        <th>Longitude</th>
+                        <th>Latutude</th>
+                        <th>Remove From the List</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        subscribers.map(subscriber => (
+                            <tr key={subscriber.id}>
+                                <td>{subscriber.email}</td>
+                                <td>{subscriber.telegramId}</td>
+                                <td>{subscriber.phoneNumber}</td>
+                                <td>{subscriber.geolocation.longitude}</td>
+                                <td>{subscriber.geolocation.latitude}</td>
+                                <td className="button"><button>Remove</button></td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
         </div>
-    )
+    );
 }

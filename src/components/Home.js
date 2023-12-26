@@ -36,12 +36,11 @@ export default function Home() {
     return (
         <div>
             <h2>Manage Your Account</h2>
-            <p>Jwt Token: { jwtToken }</p>
             <div className="grid-container">
                 <div className="grid-item" onClick={goToSubscribersPage}>Manage Your Subscribers</div>
                 <div className="grid-item" onClick={goToTemplatesPage}>Manage Your Templates</div>
                 <div className="grid-item">Manage Your Subscription</div>
-                <div className="grid-item">Notiy Your Subcribers</div>
+                <div className="grid-item">Notify Your Subscribers</div>
             </div>
         </div>
     )

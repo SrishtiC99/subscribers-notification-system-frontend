@@ -2,6 +2,7 @@ import { useState } from "react";
 import { login, signUp } from "../api/axiosConfig";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "../actions/actions";
+import '../css/Login.css';
 
 export default function Login() {
     const dispatch = useDispatch();
@@ -53,18 +54,17 @@ export default function Login() {
             <form>
                 <label>
                     Email:
-                    <input type="email" value={ email } name="email" onChange={handleEmailChange}></input>
+                    <input type="email" placeholder= "Email" value={ email } name="email" onChange={handleEmailChange}></input>
                 </label>
                 <br />
                 <label>
                     Password:
-                    <input type="password" value={password} name="password" onChange={handlePasswordChange}></input>
+                    <input type="password" placeholder="Password" value={password} name="password" onChange={handlePasswordChange}></input>
                 </label>
                 <br/>
                 <button type="submit" onClick={handleLogin}>Log In</button>
                 <br />
-                <h5>Do not have an acoount? </h5>
-                <button type="submit" onClick={handleSignUp}>Sign Up</button>
+                <p>Do not have an acoount? &nbsp; <button type="submit" onClick={handleSignUp}>Sign Up</button></p>
             </form>
         </div>
     );
