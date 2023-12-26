@@ -24,3 +24,11 @@ export const getAllTemplates = (jwtToken) => {
         }
     });
 };
+
+export const getAllSubscribers = (jwtToken) => {
+    return apiService.get('api/v1/subscribers/', {
+        headers: {
+            Authorization: `Bearer ${jwtToken}`
+        }
+    });
+}

@@ -2,7 +2,8 @@ const initialState = {
     isAuthenticated: false,
     jwtToken: null,
     loggedInUser: null,
-    templates: []
+    templates: [],
+    subscribers: []
 }
 
 const authReducer = (state = initialState, action) => {
@@ -19,6 +20,12 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 templates
+            }
+        case 'FETCH_ALL_SUBSCRIBERS':
+            const { subscribers } = action.payload;
+            return {
+                ...state,
+                subscribers
             }
         case 'LOGIN_FAILED':
             return state;
