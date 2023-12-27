@@ -25,3 +25,7 @@ button {
     background-color: #A25772;
     color: white;
 }
+
+.add_button {
+    margin-top: 32px;
+}

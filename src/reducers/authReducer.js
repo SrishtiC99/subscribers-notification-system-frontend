@@ -30,6 +30,18 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 subscribers
             }
+        case 'ADD_SUBSCRIBERS':
+            const { updatedSubscribers } = action.payload;
+            return {
+                ...state,
+                subscribers: updatedSubscribers
+            }
+        case 'REMOVE_SUBSCRIBER':
+            const { subscribersAfterRemoval } = action.payload;
+            return {
+                ...state,
+                subscribers: subscribersAfterRemoval
+            }
         case 'GET_BILLING_ACCOUNT':
             return {
                 ...state,

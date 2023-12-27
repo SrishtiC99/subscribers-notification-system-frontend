@@ -33,6 +33,25 @@ export const getAllSubscribers = (jwtToken) => {
     });
 }
 
+export const addSubscriberList = (jwtToken, file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    return apiService.post('api/v1/subscribers/file', formData, {
+        headers: {
+            'Content-Type': 'multi-part/form-data',
+            Authorization: `Bearer ${jwtToken}`
+        }
+    });
+}
+
+export const deleteSubscriber = (jwtToken, id) => {
+    return apiService.delete(`api/v1/subscribers/${id}`, {
+        headers: {
+            Authorization: `Bearer ${jwtToken}`
+        }
+    })
+}
+
 export const getBillingAccount = (jwtToken) => {
     return apiService.get('api/v2/billing/', {
         headers: {

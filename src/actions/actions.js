@@ -13,6 +13,16 @@ export const fetchAllSubscribers = (subscribers) => ({
     payload: { subscribers }
 });
 
+export const addSubscribers = (subscribers) => ({
+    type: 'ADD_SUBSCRIBERS',
+    payload: { subscribers }
+});
+
+export const removeSubscriber = (subscribers) => ({
+    type: 'REMOVE_SUBSCRIBER',
+    payload: { subscribers }
+});
+
 export const fetchBillingAccount = (isAccountExpired, role, lastBillingDate) => ({
     type: 'GET_BILLING_ACCOUNT',
     payload: { isAccountExpired, role, lastBillingDate }

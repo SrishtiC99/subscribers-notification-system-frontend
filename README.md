@@ -2,6 +2,5 @@
 
 #### Todos:
 
-- [ ] Remove and Add subscribers
 - [ ] Add Template
 - [ ] Notify Subscribers
