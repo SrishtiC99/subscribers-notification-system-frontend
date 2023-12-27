@@ -24,6 +24,11 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 templates
             }
+        case 'ADD_TEMPLATE':
+            return {
+                ...state,
+                templates: action.payload
+            }
         case 'FETCH_ALL_SUBSCRIBERS':
             const { subscribers } = action.payload;
             return {

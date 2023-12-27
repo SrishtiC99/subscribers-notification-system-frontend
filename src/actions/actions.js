@@ -8,6 +8,11 @@ export const fetchTemplates = (templates) => ({
     payload: {templates}
 })
 
+export const addTemplate = (templates) => ({
+    type: 'ADD_TEMPLATE',
+    payload: { templates }
+});
+
 export const fetchAllSubscribers = (subscribers) => ({
     type: 'FETCH_ALL_SUBSCRIBERS',
     payload: { subscribers }

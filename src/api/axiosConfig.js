@@ -25,6 +25,14 @@ export const getAllTemplates = (jwtToken) => {
     });
 };
 
+export const createTemplate = (jwtToken, templateRequest) => {
+    return apiService.post('api/v1/templates/', templateRequest, {
+        headers: {
+            Authorization: `Bearer ${jwtToken}`
+        }
+    });
+}
+
 export const getAllSubscribers = (jwtToken) => {
     return apiService.get('api/v1/subscribers/', {
         headers: {
