@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { login, signUp } from "../api/axiosConfig";
+import { getAllSubscribers, getAllTemplates, getBillingAccount, login, signUp } from "../api/axiosConfig";
 import { useDispatch } from "react-redux";
-import { loginSuccess } from "../actions/actions";
+import { fetchAllSubscribers, fetchBillingAccount, fetchTemplates, loginSuccess } from "../actions/actions";
 import '../css/Login.css';
 
 export default function Login() {
@@ -27,6 +27,37 @@ export default function Login() {
             .then((response) => {
                 const jwtToken = response.data.jwt;
                 dispatch(loginSuccess(jwtToken));
+
+                // Fetch subscribers and templates just after login,
+                // so that we won't have to fetch it again and again from the backend
+                
+                getAllTemplates(jwtToken)
+                    .then((response) => {
+                        console.log("Templates: " + JSON.stringify(response.data));
+                        dispatch(fetchTemplates(response.data));
+                    })
+                    .catch((error) => {
+                        console.error("Error: " + JSON.stringify(error.response));
+                    });
+                
+                getAllSubscribers(jwtToken)
+                    .then((response) => {
+                        console.log("Subscribers: " + JSON.stringify(response.data));
+                        dispatch(fetchAllSubscribers(response.data));
+                    })
+                    .catch((error) => {
+                        console.error("Error: " + JSON.stringify(error.response));
+                    });
+                
+                getBillingAccount(jwtToken)
+                    .then((response) => {
+                        console.log("Billing: " + JSON.stringify(response.data));
+                        dispatch(fetchBillingAccount(response.data.isExpired,
+                            response.data.accountType, response.data.lastBillingDate));
+                    })
+                    .catch((error) => {
+                        console.error("Error: " + JSON.stringify(error.response));
+                    });
             })
             .catch((error) => {
                 console.error("Login Failed: " + JSON.stringify(error.response.data));
