@@ -52,6 +52,38 @@ export const addSubscriberList = (jwtToken, file) => {
     });
 }
 
+export const getSubscriberById = (jwtToken, id) => {
+    return apiService.get(`api/v1/subscribers/${id}`, {
+        headers: {
+            Authorization: `Bearer ${jwtToken}`
+        }
+    });
+}
+
+export const getSubscribersByTemplateId = (jwtToken, id) => {
+    return apiService.get(`api/v1/subscribers/template/${id}`, {
+        headers: {
+            Authorization: `Bearer ${jwtToken}`
+        }
+    });
+}
+
+export const addTemplateSubscribers = (jwtToken, id, subscriberListRequest) => {
+    return apiService.post(`api/v1/templates/${id}/subscribers`, subscriberListRequest, {
+        headers: {
+            Authorization: `Bearer ${jwtToken}`
+        }
+    });
+}
+
+export const deleteTemplateSubscribers = (jwtToken, id, subscriberListRequest) => {
+    return apiService.delete(`api/v1/templates/${id}/subscribers`, subscriberListRequest, {
+        headers: {
+            Authorization: `Bearer ${jwtToken}`
+        }
+    });
+}
+
 export const deleteSubscriber = (jwtToken, id) => {
     return apiService.delete(`api/v1/subscribers/${id}`, {
         headers: {

@@ -1,0 +1,3 @@
+input:checked~.checkmark {
+    background-color: #A25772;
+}

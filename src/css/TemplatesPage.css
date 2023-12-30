@@ -46,3 +46,13 @@ button {
 .form-item {
     margin: 8px;
 }
+
+.add-remove-subs {
+    color: #7C93C3;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
