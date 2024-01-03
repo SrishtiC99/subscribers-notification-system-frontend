@@ -57,7 +57,7 @@ export default function TemplateDetailsPage() {
             .then((response) => {
                 console.log(JSON.stringify(response.data));
                 setSelectedSubscriberIdsRemove([]);
-                handleShowSubscriber();
+                setShowSubscriber(false);
             })
             .catch((error) => {
                 console.error("Error: " + JSON.stringify(error.response));

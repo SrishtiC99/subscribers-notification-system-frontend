@@ -2,5 +2,4 @@
 
 #### Todos:
 
-- [ ] Remove subscribers to template (not working)
 - [ ] Deployment

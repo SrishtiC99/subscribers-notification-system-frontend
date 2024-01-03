@@ -77,9 +77,12 @@ export const addTemplateSubscribers = (jwtToken, id, subscriberListRequest) => {
 }
 
 export const deleteTemplateSubscribers = (jwtToken, id, subscriberListRequest) => {
-    return apiService.delete(`api/v1/templates/${id}/subscribers`, subscriberListRequest, {
+    return apiService.delete(`api/v1/templates/${id}/subscribers`, {
         headers: {
             Authorization: `Bearer ${jwtToken}`
+        },
+        data: {
+            subscriberIds: subscriberListRequest.subscriberIds
         }
     });
 }
