@@ -115,3 +115,12 @@ export const upgadeToOwner = (jwtToken) => {
         }
     });
 }
+
+export const notifySubscribers = (jwtToken, templateId) => {
+    console.log(jwtToken);
+    return apiService.post(`api/v1/notifications/${templateId}`, null, {
+        headers: {
+            Authorization: `Bearer ${jwtToken}`
+        }
+    });
+}

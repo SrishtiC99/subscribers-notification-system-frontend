@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import '../css/TemplatesPage.css';
 import { useState } from "react";
-import { createTemplate } from "../api/axiosConfig";
+import { createTemplate, notifySubscribers } from "../api/axiosConfig";
 import { addTemplate } from "../actions/actions";
 import { useNavigate } from "react-router-dom";
 
@@ -31,6 +31,17 @@ export default function TemplatesPage() {
             });
     }
 
+    const handleSendNotification = (template) => {
+        console.log(jwtToken);
+        notifySubscribers(jwtToken, template.id)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+            })
+            .catch((error) => {
+                console.error("Error: " + JSON.stringify(error.response));
+            });
+    }
+
     const goToTemplateDetailPage = (template) => {
         navigate('/template-details', {state: template})
     }
@@ -41,10 +52,12 @@ export default function TemplatesPage() {
                 <h2> Manage Your Templates </h2>
                 <div className="template-container">
                     {templates.map(template => (
-                        <div className="template" key={template.id} onClick={() => goToTemplateDetailPage(template)}>
-                            <p className="template-title">{template.title}</p>
-                            <p className="template-content">{template.content}</p>
-                            <button>Notify</button>
+                        <div className="template" key={template.id}>
+                            <div onClick={() => goToTemplateDetailPage(template)}>
+                                <p className="template-title">{template.title}</p>
+                                <p className="template-content">{template.content}</p>
+                            </div>
+                            <button onClick={() => handleSendNotification(template)}>Notify</button>
                         </div>
                     ))}
                 </div>

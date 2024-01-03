@@ -2,5 +2,5 @@
 
 #### Todos:
 
-- [ ] Add/Remove subscribers to template
-- [ ] Notify Subscribers
+- [ ] Remove subscribers to template (not working)
+- [ ] Deployment
